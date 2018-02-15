@@ -21,6 +21,8 @@ class CreatePersonasTable extends Migration
             $table->string('telefono',12);
             $table->string('email',80)->unique();
             $table->string('password',80);
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
             $table->timestamps();
         });
     }
