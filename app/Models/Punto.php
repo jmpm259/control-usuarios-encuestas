@@ -1,0 +1,11 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Punto extends Model
+{
+    protected $table = "puntos";
+    protected $fillable = ['puntos','usuario_id'];
+}
