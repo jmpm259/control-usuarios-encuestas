@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Ip extends Model
 {
     protected $table = "ip";
-    protected $fillable = ['ip','status','usuario_id'];
+    protected $fillable = ['ip','status'];
+
+    public function Usuarios()
+    {
+    	return $this->belongsToMany('App\Models\Usuario')->withTimestamps();
+    }
 }
