@@ -17,8 +17,15 @@ class CreateIpTable extends Migration
             $table->increments('id');
             $table->string('ip',15);
             $table->enum('status',['buena','reportada'])->default('buena');
+            $table->timestamps();
+        });
+
+        Schema::create('usuario_ip', function (Blueprint $table){
+            $table->increments('id');
             $table->integer('usuario_id')->unsigned();
-            $table->foreign('usuario_id')->references('id')->on('usuarios')->onUpdate('cascade');
+            $table->foreign('usuario_id')->references('id')->on('usuarios')->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('ip_id')->unsigned();
+            $table->foreign('ip_id')->references('id')->on('ip')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +37,7 @@ class CreateIpTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('usuario_ip');
         Schema::dropIfExists('ip');
     }
 }
