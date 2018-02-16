@@ -8,4 +8,9 @@ class Punto extends Model
 {
     protected $table = "puntos";
     protected $fillable = ['puntos','usuario_id'];
+
+    public function Usuarios()
+    {
+    	return $this->belongsTo('App\Models\Usuarios');
+    }
 }
