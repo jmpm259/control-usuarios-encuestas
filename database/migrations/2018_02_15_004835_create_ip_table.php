@@ -20,7 +20,7 @@ class CreateIpTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('usuario_ip', function (Blueprint $table){
+        Schema::create('ip_usuario', function (Blueprint $table){
             $table->increments('id');
             $table->integer('usuario_id')->unsigned();
             $table->foreign('usuario_id')->references('id')->on('usuarios')->onUpdate('cascade')->onDelete('cascade');
@@ -37,7 +37,7 @@ class CreateIpTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('usuario_ip');
+        Schema::dropIfExists('ip_usuario');
         Schema::dropIfExists('ip');
     }
 }
