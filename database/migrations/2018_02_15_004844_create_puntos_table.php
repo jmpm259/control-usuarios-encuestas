@@ -15,7 +15,8 @@ class CreatePuntosTable extends Migration
     {
         Schema::create('puntos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('puntos');
+            $table->string('puntos',6);
+            $table->string('descripcion',80);
             $table->integer('usuario_id')->unsigned();
             $table->foreign('usuario_id')->references('id')->on('usuarios')->onUpdate('cascade');
             $table->timestamps();
