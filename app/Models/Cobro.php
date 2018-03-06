@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Cobro extends Model
 {
     protected $table = "cobros";
-    protected $fillable = ['cobro','usuario_id'];
+    protected $fillable = ['cobro','cuenta_id'];
 
-    public function Usuario()
+    public function Cuenta()
     {
-    	return $this->belongsTo('App\Models\Usuario');
+    	return $this->belongsTo('App\Models\Cuenta');
     }
 }

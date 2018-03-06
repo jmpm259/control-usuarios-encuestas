@@ -32,8 +32,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Persona');
     }
 
-    public function Usuarios()
+    public function Cuentas()
     {
-        return $this->hasMany('App\Models\Usuario');
+        return $this->hasMany('App\Models\Cuenta');
     }
 }

@@ -9,9 +9,9 @@ class Ciudad extends Model
     protected $table = "ciudades";
     protected $fillable = ['ciudad','pais_id'];
 
-    public function Usuarios()
+    public function Cuentas()
     {
-    	return $this->hasMany('App\Models\Usuario');
+    	return $this->hasMany('App\Models\Cuenta');
     }
 
     public function Pais()

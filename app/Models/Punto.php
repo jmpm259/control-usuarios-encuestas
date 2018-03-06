@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Punto extends Model
 {
     protected $table = "puntos";
-    protected $fillable = ['puntos','descripcion','usuario_id'];
+    protected $fillable = ['puntos','descripcion','cuenta_id'];
 
-    public function Usuarios()
+    public function Cuentas()
     {
-    	return $this->belongsTo('App\Models\Usuarios');
+    	return $this->belongsTo('App\Models\Cuenta');
     }
 }

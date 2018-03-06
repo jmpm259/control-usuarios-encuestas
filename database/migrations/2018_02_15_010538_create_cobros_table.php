@@ -16,8 +16,8 @@ class CreateCobrosTable extends Migration
         Schema::create('cobros', function (Blueprint $table) {
             $table->increments('id');
             $table->string('cobro',10);
-            $table->integer('usuario_id')->unsigned();
-            $table->foreign('usuario_id')->references('id')->on('usuarios')->onUpdate('cascade');
+            $table->integer('cuenta_id')->unsigned();
+            $table->foreign('cuenta_id')->references('id')->on('cuentas')->onUpdate('cascade');
             $table->timestamps();
         });
     }

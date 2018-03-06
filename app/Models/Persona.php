@@ -9,9 +9,9 @@ class Persona extends Model
     protected $table = "personas";
     protected $fillable = ['nombre', 'apellido', 'fechanacimiento', 'telefono', 'email', 'password', 'user_id'];
 
-    public function Usuarios()
+    public function Cuentas()
     {
-    	return $this->hasMany('App\Models\Usuario');
+    	return $this->hasMany('App\Models\Cuenta');
     }
 
     public function User()

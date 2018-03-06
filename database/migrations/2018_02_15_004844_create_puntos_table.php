@@ -17,8 +17,8 @@ class CreatePuntosTable extends Migration
             $table->increments('id');
             $table->string('puntos',6);
             $table->string('descripcion',80);
-            $table->integer('usuario_id')->unsigned();
-            $table->foreign('usuario_id')->references('id')->on('usuarios')->onUpdate('cascade');
+            $table->integer('cuenta_id')->unsigned();
+            $table->foreign('cuenta_id')->references('id')->on('cuentas')->onUpdate('cascade');
             $table->timestamps();
         });
     }

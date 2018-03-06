@@ -9,8 +9,8 @@ class Ip extends Model
     protected $table = "ip";
     protected $fillable = ['ip','status'];
 
-    public function Usuarios()
+    public function Cuentas()
     {
-    	return $this->belongsToMany('App\Models\Usuario')->withTimestamps();
+    	return $this->belongsToMany('App\Models\Cuenta')->withTimestamps();
     }
 }

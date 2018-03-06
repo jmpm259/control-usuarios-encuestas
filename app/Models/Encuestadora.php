@@ -9,8 +9,8 @@ class Encuestadora extends Model
     protected $table = "encuestadoras";
     protected $fillable = ['encuestadora','cobro'];
 
-    public function Usuarios()
+    public function Cuentas()
     {
-    	return $this->hasMany('App\Models\Usuario');
+    	return $this->hasMany('App\Models\Cuenta');
     }
 }
