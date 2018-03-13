@@ -22,7 +22,7 @@ class EncuestadorasTableSeeder extends Seeder
 
         $encuestadoras = [
             ['encuestadora' => 'GLOBALTESTMARKET',
-            'cobro' => '1120',
+            'cobro' => '4480',
             'created_at' => date('Y-m-d H:m:s'),
             'updated_at' => date('Y-m-d H:m:s')],
             
