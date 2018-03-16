@@ -35,6 +35,18 @@ class CobroPaisTableSeeder extends Seeder
             'pais_id' => $paisC[0]['id'],  
             'cobro' => '1120',
             'created_at' => date('Y-m-d H:m:s'),
+            'updated_at' => date('Y-m-d H:m:s')],
+
+            ['encuestadora_id' => $enc[0]['id'],
+            'pais_id' => $paisC[0]['id'],  
+            'cobro' => '1800',
+            'created_at' => date('Y-m-d H:m:s'),
+            'updated_at' => date('Y-m-d H:m:s')],
+
+            ['encuestadora_id' => $enc[0]['id'],
+            'pais_id' => $paisC[0]['id'],  
+            'cobro' => '2400',
+            'created_at' => date('Y-m-d H:m:s'),
             'updated_at' => date('Y-m-d H:m:s')]
         ];
 
