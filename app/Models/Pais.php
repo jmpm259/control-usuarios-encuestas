@@ -13,4 +13,8 @@ class Pais extends Model
     {
     	return $this->hasMany('App\Models\Ciudad');
     }
+    public function Encuestadoras()
+    {
+    	return $this->belongsToMany('App\Models\Encuestadora')->withTimestamps();
+    }
 }

@@ -15,7 +15,16 @@ class CreateEncuestadorasTable extends Migration
     {
         Schema::create('encuestadoras', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('encuestadora',50);
+            $table->string('encuestadora',50);            
+            $table->timestamps();
+        });
+
+        Schema::create('encuestadora_pais', function (Blueprint $table){
+            $table->increments('id');
+            $table->integer('encuestadora_id')->unsigned();
+            $table->foreign('encuestadora_id')->references('id')->on('encuestadoras')->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('pais_id')->unsigned();
+            $table->foreign('pais_id')->references('id')->on('paises')->onUpdate('cascade')->onDelete('cascade');
             $table->string('cobro',10);
             $table->timestamps();
         });
@@ -28,6 +37,7 @@ class CreateEncuestadorasTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('encuestadora_pais');
         Schema::dropIfExists('encuestadoras');
     }
 }

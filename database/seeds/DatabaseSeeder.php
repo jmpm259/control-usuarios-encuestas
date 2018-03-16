@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
         	EncuestadorasTableSeeder::class,
         	PaisesTableSeeder::class,
-        	CiudadesTableSeeder::class,
+            CiudadesTableSeeder::class,
+            CobroPaisTableSeeder::class,
     	]);
     }
 }
