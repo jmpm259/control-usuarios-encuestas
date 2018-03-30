@@ -1,67 +1,131 @@
- <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url ('') }}">Encuentas v1.0</a>
+                <a class="navbar-brand" href="{{ url ('/') }}">Encuestas v1.0</a>
             </div>
-            <!-- /.navbar-header -->
-
-            <ul class="nav navbar-top-links navbar-right">
-
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
                 @guest
                     <li><a href="{{ route('login') }}">Login</a></li>
                     <li><a href="{{ route('register') }}">Register</a></li>
                 @else
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                            <i class="fa fa-user fa-fw"></i> {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{ Auth::user()->name }} <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> Perfil</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                <i class="fa fa-sign-out fa-fw"></i> Salir
+                            </a>
 
-                        <ul class="dropdown-menu">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+                @endguest
+            </ul>
+            <!-- /.Top Menu Items -->
+
+            <!-- navbar-collapse Nav-Menu -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="{{ Request::is('/') ? 'active' : ''}}">
+                        <a href="{{ url ('/') }}"><i class="fa fa-home"></i> Home</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#registros"><i class="fa fa-file"></i> Registros <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="registros" class="collapse">
                             <li>
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                                    <i class="fa fa-sign-out fa-fw"></i> Salir
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
+                                <a href="#">Paises</a>
+                            </li>
+                            <li>
+                                <a href="#">Estados</a>
+                            </li>
+                            <li>
+                                <a href="#">Ciudades</a>
+                            </li>
+                            <li>
+                                <a href="#">Encuestadoras</a>
                             </li>
                         </ul>
                     </li>
-                @endguest
-                <!-- /.dropdown -->
-            </ul>
-            <!-- /.navbar-top-links -->
-
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-
-                        <li {{ (Request::is('/') ? 'class="active"' : '') }}>
-                            <a href="{{ url ('') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
-                        <li {{ (Request::is('*charts') ? 'class="active"' : '') }}>
-                            <a href="{{ url ('charts') }}"><i class="fa fa-bar-chart-o fa-fw"></i> Charts</a>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li {{ (Request::is('*tables') ? 'class="active"' : '') }}>
-                            <a href="{{ url ('tables') }}"><i class="fa fa-table fa-fw"></i> Tables</a>
-                        </li>
-                        <li {{ (Request::is('*forms') ? 'class="active"' : '') }}>
-                            <a href="{{ url ('forms') }}"><i class="fa fa-edit fa-fw"></i> Forms</a>
-                        </li>
-
-                    </ul>
-                </div>
-                <!-- /.sidebar-collapse -->
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#cuentas"><i class="fa fa-users"></i> Cuentas <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="cuentas" class="collapse">
+                            <li>
+                                <a href="#">Crear Cuenta</a>
+                            </li>
+                            <li>
+                                <a href="#">Asignar Ip</a>
+                            </li>
+                            <li>
+                                <a href="#">Cambiar Estatus</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#listados"><i class="fa fa-list"></i> Listados <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="listados" class="collapse">
+                            <li>
+                                <a href="#">Ip</a>
+                            </li>
+                            <li>
+                                <a href="#">Cobros</a>
+                            </li>
+                            <li>
+                                <a href="#">Cuentas</a>
+                            </li>
+                            <li>
+                                <a href="#">Cuentas Baneadas</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#historial"><i class="fa fa-history"></i> Historial <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="historial" class="collapse">
+                            <li>
+                                <a href="#">Bitacora</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#usuario"><i class="fa fa-user"></i> Usuario <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="usuario" class="collapse">
+                            <li>
+                                <a href="#">Actualizar</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#ayuda"><i class="fa fa-question-circle"></i> Ayuda <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="ayuda" class="collapse">
+                            <li>
+                                <a href="#">Pre-Configurar</a>
+                            </li>
+                            <li>
+                                <a href="#">Requerimientos</a>
+                            </li>
+                            <li>
+                                <a href="#">Acerca de Encuestas v1.0</a>
+                            </li>
+                        </ul>
+                    </li>                     
+                </ul>
             </div>
-            <!-- /.navbar-static-side -->
+            <!-- /.navbar-collapse Nav-Menu-->
         </nav>
+ <!-- Navigation -->
